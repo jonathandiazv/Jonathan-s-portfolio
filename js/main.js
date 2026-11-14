@@ -108,7 +108,18 @@
     $("[data-k=summary]", fe).textContent = f.summary;
     fill($("[data-k=points]", fe), f.points.map((p) => h("li", null, p)));
     fill($("[data-k=tags]", fe), chips(S.featured.tags, lang));
-    $$("[data-bench]", fe).forEach((el) => { el.textContent = t.bench[el.dataset.bench]; });
+    // "|" = retour à la ligne dans les légendes du schéma
+    $$("[data-bench]", fe).forEach((el) => {
+      const lines = t.bench[el.dataset.bench].split("|");
+      if (el.tagName.toLowerCase() !== "text" || lines.length === 1) { el.textContent = lines.join(" "); return; }
+      el.replaceChildren(...lines.map((line, i) => {
+        const ts = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+        ts.setAttribute("x", el.getAttribute("x"));
+        ts.setAttribute("dy", i === 0 ? "0" : "1.15em");
+        ts.textContent = line;
+        return ts;
+      }));
+    });
     $$("[data-bench-step]", fe).forEach((el) => { el.textContent = t.bench.steps[+el.dataset.benchStep]; });
     const link = $("[data-k=link]", fe);
     link.hidden = !S.featured.link;

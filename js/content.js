@@ -34,7 +34,7 @@ window.SITE = {
       viewCode: "Voir le projet sur GitHub",
       bench: {
         title: "Principe : la strioscopie",
-        source: "Source", lens: "Lentille", plate: "Plaque", knife: "Couteau", camera: "Caméra",
+        source: "Source", lens: "Lentille", plate: "Plaque", knife: "Lame de|rasoir", camera: "Caméra",
         steps: ["Sans défaut, la lumière est bloquée : image noire", "Un défaut dévie la lumière : point lumineux", "Le CNN détecte et classifie le défaut"]
       },
       close: "Fermer",
@@ -68,7 +68,7 @@ window.SITE = {
       viewCode: "View the project on GitHub",
       bench: {
         title: "How it works: schlieren imaging",
-        source: "Source", lens: "Lens", plate: "Glass", knife: "Knife edge", camera: "Camera",
+        source: "Source", lens: "Lens", plate: "Glass", knife: "Razor|blade", camera: "Camera",
         steps: ["No defect, light is blocked: dark image", "A defect deflects light: bright spot", "The CNN detects and classifies the defect"]
       },
       close: "Close",
@@ -102,7 +102,7 @@ window.SITE = {
       viewCode: "Ver el proyecto en GitHub",
       bench: {
         title: "Principio: la estrioscopía",
-        source: "Fuente", lens: "Lente", plate: "Placa", knife: "Cuchilla", camera: "Cámara",
+        source: "Fuente", lens: "Lente", plate: "Placa", knife: "Cuchilla|de afeitar", camera: "Cámara",
         steps: ["Sin defecto, la luz queda bloqueada: imagen negra", "Un defecto desvía la luz: punto brillante", "La CNN detecta y clasifica el defecto"]
       },
       close: "Cerrar",
@@ -292,7 +292,7 @@ window.SITE = {
               "Análisis ad hoc para la dirección: extracción de datos con SQL y SAS."
             ]
           },
-          skills: ["Power BI", "SQL", "SAS", "Matching"]
+          skills: ["Power BI", "SQL", "SAS"]
         }
       ]
     }
