@@ -1,0 +1,9 @@
+# Anciens brouillons et exports Framer (lourds, gardés en local uniquement)
+_drafts/
+framer/
+
+# Outils locaux
+.claude/
+.vscode/
+Thumbs.db
+.DS_Store

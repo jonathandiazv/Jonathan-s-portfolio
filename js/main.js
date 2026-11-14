@@ -1,0 +1,234 @@
+/* Rendu du site à partir de js/content.js — pas besoin de modifier ce fichier
+   pour mettre à jour le contenu. */
+(function () {
+  "use strict";
+  const S = window.SITE;
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Petit créateur d'éléments : h("li", {class: "x"}, "texte", enfant...) */
+  function h(tag, attrs, ...kids) {
+    const el = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (k === "class") el.className = v;
+      else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+      else el.setAttribute(k, v);
+    }
+    for (const kid of kids.flat(Infinity)) {
+      if (kid == null || kid === false) continue;
+      el.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
+    }
+    return el;
+  }
+
+  /* "Texte FR / Text EN" -> partie selon la langue */
+  const pick = (str, lang) => {
+    const parts = String(str).split(" / ");
+    return parts.length === 2 ? parts[lang === "fr" ? 0 : 1] : str;
+  };
+  const chips = (list, lang) => list.map((t) => h("li", null, pick(t, lang)));
+  const fill = (el, nodes) => { el.replaceChildren(...nodes); };
+
+  /* ---------- Langue ---------- */
+  function initialLang() {
+    try {
+      const saved = localStorage.getItem("lang");
+      if (saved === "fr" || saved === "en") return saved;
+    } catch (e) { /* stockage indisponible */ }
+    return (navigator.language || "fr").toLowerCase().startsWith("fr") ? "fr" : "en";
+  }
+  let lang = initialLang();
+
+  function render() {
+    const t = S.ui[lang];
+    document.documentElement.lang = lang;
+
+    $$("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+      if (key === "loading") el.textContent = t.loading.repeat(3);
+      else if (t[key] != null) el.textContent = t[key];
+    });
+    $$("[data-bind]").forEach((el) => { el.textContent = S[el.dataset.bind]; });
+    $$("[data-bind-src]").forEach((el) => { el.src = S[el.dataset.bindSrc]; });
+
+    // Dock
+    $$(".dock [data-nav]").forEach((a) => {
+      const label = t.nav[a.dataset.nav];
+      $(".tip", a).textContent = label;
+      a.setAttribute("aria-label", label);
+    });
+    $("#lang-label").textContent = lang === "fr" ? "EN" : "FR";
+    $("#lang-btn .tip").textContent = t.nav.lang;
+    $("#lang-btn").setAttribute("aria-label", t.nav.lang);
+    $("#modal-close").setAttribute("aria-label", t.close);
+
+    // À propos
+    fill($("#about-text"), S.about[lang].map((p) => h("p", null, p)));
+    fill($("#facts"), S.facts[lang].map((f) => h("div", null, h("dt", null, f.k), h("dd", null, f.v))));
+    fill($("#langs"), S.languages.map((l) =>
+      h("li", null,
+        h("span", null, l[lang]),
+        h("span", { class: "lvl" }, l.level),
+        h("span", { class: "gauge", "aria-hidden": "true" },
+          Array.from({ length: 6 }, (_, i) => h("i", { class: i < l.score ? "on" : "" })))
+      )));
+    fill($("#hobbies"), chips(S.hobbies[lang], lang));
+
+    // Parcours
+    fill($("#work"), S.work.map((w) => {
+      const c = w[lang];
+      return h("li", { class: "reveal" },
+        h("h4", null, c.role, " · ", h("span", { class: "org" }, w.org)),
+        h("span", { class: "when" }, c.when),
+        h("ul", { class: "bullets" }, c.points.map((p) => h("li", null, p))),
+        h("ul", { class: "chips small" }, chips(w.tags, lang)));
+    }));
+    fill($("#education"), S.education.map((e) =>
+      h("li", { class: "reveal" },
+        h("h4", null, e.org),
+        h("span", { class: "when" }, e[lang].when),
+        h("p", null, e[lang].title))));
+
+    // Projet phare
+    const f = S.featured[lang], fe = $("#featured");
+    $("[data-k=title]", fe).textContent = f.title;
+    $("[data-k=meta]", fe).textContent = f.meta;
+    $("[data-k=summary]", fe).textContent = f.summary;
+    fill($("[data-k=points]", fe), f.points.map((p) => h("li", null, p)));
+    fill($("[data-k=tags]", fe), chips(S.featured.tags, lang));
+
+    // Projets académiques
+    fill($("#project-grid"), S.projects.map((p, i) => {
+      const c = p[lang];
+      return h("button", { class: "project reveal", type: "button", onclick: () => openProject(i) },
+        h("div", { class: "thumb" }, h("img", { src: p.img, alt: "", loading: "lazy" })),
+        h("div", { class: "body" },
+          h("div", { class: "row" }, h("span", { class: "tag" }, c.tag), h("span", null, p.year)),
+          h("h4", null, c.title),
+          h("p", null, c.short),
+          h("span", { class: "more" }, t.readMore + " →")));
+    }));
+
+    // Compétences
+    fill($("#skill-grid"), S.skills.map((g) =>
+      h("div", { class: "card reveal" }, h("h3", null, g[lang]), h("ul", { class: "chips" }, chips(g.items, lang)))));
+    fill($("#soft"), chips(S.soft[lang], lang));
+
+    // Contact
+    const mail = "mailto:" + S.email;
+    $("#email-link").href = mail;
+    $("#email-btn").href = mail;
+
+    observeReveals();
+  }
+
+  /* ---------- Fenêtre projet ---------- */
+  const modal = $("#modal");
+  function openProject(i) {
+    const p = S.projects[i], c = p[lang];
+    fill($("#modal-body"), [
+      h("img", { src: p.img, alt: c.title }),
+      h("div", { class: "content" },
+        h("p", { class: "eyebrow" }, c.tag + " · " + p.year),
+        h("h3", null, c.title),
+        h("ul", { class: "chips small" }, chips(p.tools, lang)),
+        c.sections.map(([title, text]) => [h("h5", null, title), h("p", null, text)]))
+    ]);
+    if (typeof modal.showModal === "function") modal.showModal();
+    else modal.setAttribute("open", "");
+  }
+  $("#modal-close").addEventListener("click", () => modal.close());
+  modal.addEventListener("click", (e) => { if (e.target === modal) modal.close(); });
+
+  /* ---------- Apparition au défilement ---------- */
+  const revealObs = "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); revealObs.unobserve(en.target); } });
+      }, { threshold: 0.12 })
+    : null;
+  function observeReveals() {
+    $$(".reveal:not(.in)").forEach((el) => (revealObs ? revealObs.observe(el) : el.classList.add("in")));
+  }
+
+  /* ---------- Section active dans le dock ---------- */
+  if ("IntersectionObserver" in window) {
+    const navObs = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        $$(".dock [data-nav]").forEach((a) => a.classList.toggle("active", a.dataset.nav === en.target.id));
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ["home", "about", "journey", "projects", "skills", "contact"].forEach((id) => navObs.observe(document.getElementById(id)));
+  }
+
+  /* ---------- Carré du hero : tap pour la citation sur mobile ---------- */
+  $("#square").addEventListener("click", (e) => e.currentTarget.classList.toggle("flipped"));
+
+  /* ---------- Changement de langue ---------- */
+  $("#lang-btn").addEventListener("click", () => {
+    lang = lang === "fr" ? "en" : "fr";
+    try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
+    render();
+  });
+
+  /* ---------- Copier l'e-mail ---------- */
+  $("#copy-btn").addEventListener("click", async () => {
+    const label = $("#copy-label");
+    try {
+      await navigator.clipboard.writeText(S.email);
+      label.textContent = S.ui[lang].copied;
+    } catch (e) {
+      window.location.href = "mailto:" + S.email;
+      return;
+    }
+    setTimeout(() => { label.textContent = S.ui[lang].copy; }, 2000);
+  });
+
+  $("#year").textContent = new Date().getFullYear();
+
+  /* ---------- Champ d'étoiles (sous les sections) ---------- */
+  (function stars() {
+    const cv = $("#stars"), ctx = cv.getContext("2d");
+    let w, hgt, pts = [], dpr = Math.min(window.devicePixelRatio || 1, 2);
+    function resize() {
+      w = cv.width = innerWidth * dpr; hgt = cv.height = innerHeight * dpr;
+      const n = Math.round((innerWidth * innerHeight) / 5000);
+      pts = Array.from({ length: n }, () => ({
+        x: Math.random() * w, y: Math.random() * hgt,
+        r: (Math.random() * 1.1 + 0.2) * dpr, a: Math.random() * 0.7 + 0.15,
+        d: Math.random() * 0.4 + 0.1, tw: Math.random() * Math.PI * 2
+      }));
+    }
+    function draw(time) {
+      ctx.clearRect(0, 0, w, hgt);
+      const off = (scrollY * dpr);
+      for (const p of pts) {
+        const y = (((p.y - off * p.d) % hgt) + hgt) % hgt;
+        const a = reduceMotion ? p.a : p.a * (0.75 + 0.25 * Math.sin(time / 900 + p.tw));
+        ctx.globalAlpha = a; ctx.fillStyle = "#fff";
+        ctx.beginPath(); ctx.arc(p.x, y, p.r, 0, Math.PI * 2); ctx.fill();
+      }
+      if (!reduceMotion) requestAnimationFrame(draw);
+    }
+    resize(); addEventListener("resize", resize);
+    if (reduceMotion) { draw(0); addEventListener("scroll", () => draw(0), { passive: true }); }
+    else requestAnimationFrame(draw);
+  })();
+
+  /* ---------- Rendu + fin du loader ---------- */
+  document.body.classList.add("loading");
+  render();
+  const loader = $("#loader");
+  const video = $(".hero-video");
+  const start = performance.now();
+  let finished = false;
+  function finish() {
+    if (finished) return; finished = true;
+    const wait = Math.max(0, 1200 - (performance.now() - start)); // laisser voir le trou noir un instant
+    setTimeout(() => { loader.classList.add("done"); document.body.classList.remove("loading"); }, wait);
+  }
+  if (video.readyState >= 3) finish();
+  video.addEventListener("canplay", finish, { once: true });
+  setTimeout(finish, 3500); // filet de sécurité si la vidéo ne charge pas
+})();
