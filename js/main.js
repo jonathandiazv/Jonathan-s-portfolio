@@ -38,8 +38,7 @@
       const saved = localStorage.getItem("lang");
       if (S.langs.includes(saved)) return saved;
     } catch (e) { /* stockage indisponible */ }
-    const nav = (navigator.language || "fr").slice(0, 2).toLowerCase();
-    return S.langs.includes(nav) ? nav : "en";
+    return "en"; // anglais par défaut ; le choix du visiteur est ensuite mémorisé
   }
   let lang = initialLang();
 
