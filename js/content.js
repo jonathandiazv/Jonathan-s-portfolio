@@ -184,6 +184,51 @@ window.SITE = {
      "skills" = compétences affichées sous chaque poste. */
   work: [
     {
+      org: "GBM El Salvador",
+      initials: "GBM",
+      logo: "assets/img/logo-gbm.jpg",
+      url: "https://www.gbm.net",
+      fr: { meta: "Stage · San Salvador, Salvador" },
+      en: { meta: "Internship · San Salvador, El Salvador" },
+      es: { meta: "Pasantía · San Salvador, El Salvador" },
+      roles: [
+        {
+          upcoming: true,
+          fr: {
+            role: "Consultant IA",
+            when: "Juin — août 2027",
+            points: [
+              "Accompagnement de clients d'Amérique centrale dans l'identification et la priorisation de cas d'usage d'IA générative.",
+              "Conception de POC (assistants conversationnels, recherche augmentée sur documents internes) et évaluation de leur valeur métier.",
+              "Analyse de la maturité data des clients : qualité, gouvernance et sécurité des données comme prérequis à l'IA.",
+              "Restitution des recommandations et feuilles de route auprès des équipes métiers et de la direction."
+            ]
+          },
+          en: {
+            role: "AI Consultant",
+            when: "June — August 2027",
+            points: [
+              "Help Central American clients identify and prioritise generative AI use cases.",
+              "Design POCs (conversational assistants, retrieval-augmented search over internal documents) and assess their business value.",
+              "Assess clients' data maturity: data quality, governance and security as prerequisites for AI.",
+              "Present recommendations and roadmaps to business teams and leadership."
+            ]
+          },
+          es: {
+            role: "Consultor de IA",
+            when: "Junio — agosto 2027",
+            points: [
+              "Acompañamiento de clientes de Centroamérica en la identificación y priorización de casos de uso de IA generativa.",
+              "Diseño de POC (asistentes conversacionales, búsqueda aumentada sobre documentos internos) y evaluación de su valor de negocio.",
+              "Análisis de la madurez de datos de los clientes: calidad, gobernanza y seguridad como requisitos previos para la IA.",
+              "Presentación de recomendaciones y hojas de ruta a los equipos de negocio y a la dirección."
+            ]
+          },
+          skills: ["IA générative / Generative AI / IA generativa", "Conseil / Consulting / Consultoría", "POC", "Gouvernance des données / Data governance / Gobernanza de datos"]
+        }
+      ]
+    },
+    {
       org: "Grenoble École de Management (GEM)",
       initials: "GEM",
       logo: "assets/img/logo-gem.png",
