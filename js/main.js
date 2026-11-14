@@ -83,7 +83,9 @@
     fill($("#work"), S.work.map((w) =>
       h("li", { class: "company reveal" },
         h("div", { class: "co-head" },
-          h("span", { class: "co-logo", "aria-hidden": "true" }, w.initials),
+          w.logo
+            ? h("img", { class: "co-logo", src: w.logo, alt: "", width: "48", height: "48" })
+            : h("span", { class: "co-logo", "aria-hidden": "true" }, w.initials),
           h("div", null, h("h4", null, w.org), h("span", { class: "when" }, w[lang].meta))),
         h("ol", { class: "roles" }, w.roles.map((r) => {
           const c = r[lang];
@@ -102,7 +104,7 @@
     // Projet phare
     const f = S.featured[lang], fe = $("#featured");
     $("[data-k=title]", fe).textContent = f.title;
-    $("[data-k=meta]", fe).textContent = f.meta;
+    fill($("[data-k=meta]", fe), [].concat(f.meta).map((line) => h("span", null, line)));
     $("[data-k=summary]", fe).textContent = f.summary;
     fill($("[data-k=points]", fe), f.points.map((p) => h("li", null, p)));
     fill($("[data-k=tags]", fe), chips(S.featured.tags, lang));

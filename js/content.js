@@ -31,7 +31,7 @@ window.SITE = {
       academicTitle: "Projets académiques",
       readMore: "Voir le détail",
       skillsLabel: "Compétences",
-      viewCode: "Voir le code sur GitHub",
+      viewCode: "Voir le projet sur GitHub",
       close: "Fermer",
       skillsTitle: "Compétences",
       softTitle: "Savoir-être",
@@ -60,7 +60,7 @@ window.SITE = {
       academicTitle: "Academic projects",
       readMore: "Read more",
       skillsLabel: "Skills",
-      viewCode: "View the code on GitHub",
+      viewCode: "View the project on GitHub",
       close: "Close",
       skillsTitle: "Skills",
       softTitle: "Soft skills",
@@ -89,7 +89,7 @@ window.SITE = {
       academicTitle: "Proyectos académicos",
       readMore: "Ver detalle",
       skillsLabel: "Competencias",
-      viewCode: "Ver el código en GitHub",
+      viewCode: "Ver el proyecto en GitHub",
       close: "Cerrar",
       skillsTitle: "Competencias",
       softTitle: "Habilidades blandas",
@@ -168,6 +168,7 @@ window.SITE = {
     {
       org: "Grenoble École de Management (GEM)",
       initials: "GEM",
+      logo: "assets/img/logo-gem.png",
       fr: { meta: "Alternance · Grenoble, France" },
       en: { meta: "Apprenticeship · Grenoble, France" },
       es: { meta: "Alternancia · Grenoble, Francia" },
@@ -175,7 +176,7 @@ window.SITE = {
         {
           fr: {
             role: "Data & BI Engineer",
-            when: "Sept. 2025 — aujourd'hui",
+            when: "Septembre 2025 — aujourd'hui",
             points: [
               "Construction et automatisation des flux entre HubSpot CRM, ERP, référentiels de données et data warehouse avec Semarchy XDI.",
               "Conception et modélisation de l'architecture d'un nouveau data warehouse.",
@@ -185,7 +186,7 @@ window.SITE = {
           },
           en: {
             role: "Data & BI Engineer",
-            when: "Sept. 2025 — present",
+            when: "September 2025 — present",
             points: [
               "Built and automated data flows between HubSpot CRM, ERP, master data and the data warehouse with Semarchy XDI.",
               "Designed and modelled the architecture of a new data warehouse.",
@@ -195,7 +196,7 @@ window.SITE = {
           },
           es: {
             role: "Data & BI Engineer",
-            when: "Sept. 2025 — actualidad",
+            when: "Septiembre 2025 — actualidad",
             points: [
               "Construcción y automatización de flujos entre HubSpot CRM, ERP, datos maestros y el data warehouse con Semarchy XDI.",
               "Diseño y modelado de la arquitectura de un nuevo data warehouse.",
@@ -203,12 +204,12 @@ window.SITE = {
               "Líder del estudio comparativo y del POC de IA generativa en el ecosistema BI (Copilot en Fabric, MCP Claude): impacto presupuestario, cumplimiento del RGPD y soberanía de los datos — validación y despliegue de la primera fase."
             ]
           },
-          skills: ["Semarchy XDI", "Data warehouse", "Power BI", "Microsoft Fabric", "IA générative / Generative AI / IA generativa"]
+          skills: ["Semarchy XDI", "HubSpot", "Data warehouse", "Power BI", "Power BI Service", "IA générative / Generative AI / IA generativa"]
         },
         {
           fr: {
             role: "Data & BI Analyst",
-            when: "Sept. 2024 — août 2025",
+            when: "Septembre 2024 — août 2025",
             points: [
               "Maintenance et amélioration des rapports BI gérés par le Data Management Office (Digital Factory).",
               "Ateliers avec les équipes métiers pour recueillir les besoins et proposer des solutions adaptées.",
@@ -218,7 +219,7 @@ window.SITE = {
           },
           en: {
             role: "Data & BI Analyst",
-            when: "Sept. 2024 — Aug. 2025",
+            when: "September 2024 — August 2025",
             points: [
               "Maintained and enhanced the BI reports managed by the Data Management Office (Digital Factory).",
               "Ran workshops with business units to gather requirements and propose tailored solutions.",
@@ -228,7 +229,7 @@ window.SITE = {
           },
           es: {
             role: "Data & BI Analyst",
-            when: "Sept. 2024 — ago. 2025",
+            when: "Septiembre 2024 — agosto 2025",
             points: [
               "Mantenimiento y mejora de los informes BI gestionados por el Data Management Office (Digital Factory).",
               "Talleres con los equipos de negocio para recoger necesidades y proponer soluciones a medida.",
@@ -243,6 +244,7 @@ window.SITE = {
     {
       org: "P&V Group",
       initials: "P&V",
+      logo: "assets/img/logo-pv.png",
       fr: { meta: "Stage · Bruxelles, Belgique" },
       en: { meta: "Internship · Brussels, Belgium" },
       es: { meta: "Prácticas · Bruselas, Bélgica" },
@@ -250,7 +252,7 @@ window.SITE = {
         {
           fr: {
             role: "Data Analyst",
-            when: "Avr. — juin 2024",
+            when: "Avril — juin 2024",
             points: [
               "Développement d'un algorithme de matching pour associer des prospects aux clients actifs.",
               "Tableau de bord Power BI de suivi de l'efficacité des campagnes marketing pour optimiser les investissements.",
@@ -259,7 +261,7 @@ window.SITE = {
           },
           en: {
             role: "Data Analyst",
-            when: "Apr. — June 2024",
+            when: "April — June 2024",
             points: [
               "Developed a matching algorithm linking prospects to active customers.",
               "Built a Power BI dashboard tracking marketing campaign effectiveness to optimise spend.",
@@ -268,7 +270,7 @@ window.SITE = {
           },
           es: {
             role: "Data Analyst",
-            when: "Abr. — jun. 2024",
+            when: "Abril — junio 2024",
             points: [
               "Desarrollo de un algoritmo de matching para asociar prospectos con clientes activos.",
               "Tablero Power BI de seguimiento de la eficacia de las campañas de marketing para optimizar la inversión.",
@@ -307,7 +309,7 @@ window.SITE = {
   featured: {
     fr: {
       title: "SCOT — Système de contrôle optique par IA",
-      meta: "Chef de projet & lead technique data · Sept. 2025 — aujourd'hui · Sponsor : Télécom Saint-Étienne",
+      meta: ["Chef de projet & lead technique data · Septembre 2025 — aujourd'hui", "Sponsor : Télécom Saint-Étienne"],
       summary: "Conception d'un système d'inspection optique basé sur l'IA pour détecter et classifier automatiquement des anomalies microscopiques sur des plaques de verre industrielles.",
       points: [
         "Direction d'une équipe pluridisciplinaire de 5 apprentis-ingénieurs (photonique, data, software) : budget, planning et feuille de route technique.",
@@ -317,7 +319,7 @@ window.SITE = {
     },
     en: {
       title: "SCOT — AI-powered optical inspection",
-      meta: "Project manager & data tech lead · Sept. 2025 — present · Sponsor: Télécom Saint-Étienne",
+      meta: ["Project manager & data tech lead · September 2025 — present", "Sponsor: Télécom Saint-Étienne"],
       summary: "Designing an AI-based optical inspection system that automatically detects and classifies microscopic defects on industrial glass plates.",
       points: [
         "Leading a cross-disciplinary team of 5 apprentice engineers (photonics, data, software): budget, schedule and technical roadmap.",
@@ -327,7 +329,7 @@ window.SITE = {
     },
     es: {
       title: "SCOT — Sistema de control óptico con IA",
-      meta: "Jefe de proyecto y líder técnico de datos · Sept. 2025 — actualidad · Patrocinador: Télécom Saint-Étienne",
+      meta: ["Jefe de proyecto y líder técnico de datos · Septiembre 2025 — actualidad", "Patrocinador: Télécom Saint-Étienne"],
       summary: "Diseño de un sistema de inspección óptica basado en IA para detectar y clasificar automáticamente anomalías microscópicas en placas de vidrio industriales.",
       points: [
         "Dirección de un equipo multidisciplinario de 5 ingenieros en formación (fotónica, datos, software): presupuesto, planificación y hoja de ruta técnica.",
