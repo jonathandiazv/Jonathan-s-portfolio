@@ -32,6 +32,11 @@ window.SITE = {
       readMore: "Voir le détail",
       skillsLabel: "Compétences",
       viewCode: "Voir le projet sur GitHub",
+      bench: {
+        title: "Principe : la strioscopie",
+        source: "Source", lens: "Lentille", plate: "Plaque", knife: "Couteau", camera: "Caméra",
+        steps: ["Sans défaut, la lumière est bloquée : image noire", "Un défaut dévie la lumière : point lumineux", "Le CNN détecte et classifie le défaut"]
+      },
       close: "Fermer",
       skillsTitle: "Compétences",
       softTitle: "Savoir-être",
@@ -61,6 +66,11 @@ window.SITE = {
       readMore: "Read more",
       skillsLabel: "Skills",
       viewCode: "View the project on GitHub",
+      bench: {
+        title: "How it works: schlieren imaging",
+        source: "Source", lens: "Lens", plate: "Glass", knife: "Knife edge", camera: "Camera",
+        steps: ["No defect, light is blocked: dark image", "A defect deflects light: bright spot", "The CNN detects and classifies the defect"]
+      },
       close: "Close",
       skillsTitle: "Skills",
       softTitle: "Soft skills",
@@ -90,6 +100,11 @@ window.SITE = {
       readMore: "Ver detalle",
       skillsLabel: "Competencias",
       viewCode: "Ver el proyecto en GitHub",
+      bench: {
+        title: "Principio: la estrioscopía",
+        source: "Fuente", lens: "Lente", plate: "Placa", knife: "Cuchilla", camera: "Cámara",
+        steps: ["Sin defecto, la luz queda bloqueada: imagen negra", "Un defecto desvía la luz: punto brillante", "La CNN detecta y clasifica el defecto"]
+      },
       close: "Cerrar",
       skillsTitle: "Competencias",
       softTitle: "Habilidades blandas",
