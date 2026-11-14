@@ -29,6 +29,7 @@
     return parts[Math.min(S.langs.indexOf(lang), parts.length - 1)];
   };
   const chips = (list, lang) => list.map((t) => h("li", null, pick(t, lang)));
+  const joined = (list, lang) => list.map((t) => pick(t, lang)).join(" · ");
   const fill = (el, nodes) => { el.replaceChildren(...nodes); };
 
   /* ---------- Langue ---------- */
@@ -79,14 +80,19 @@
     fill($("#hobbies"), chips(S.hobbies[lang], lang));
 
     // Parcours
-    fill($("#work"), S.work.map((w) => {
-      const c = w[lang];
-      return h("li", { class: "reveal" },
-        h("h4", null, c.role, " · ", h("span", { class: "org" }, w.org)),
-        h("span", { class: "when" }, c.when),
-        h("ul", { class: "bullets" }, c.points.map((p) => h("li", null, p))),
-        h("ul", { class: "chips small" }, chips(w.tags, lang)));
-    }));
+    fill($("#work"), S.work.map((w) =>
+      h("li", { class: "company reveal" },
+        h("div", { class: "co-head" },
+          h("span", { class: "co-logo", "aria-hidden": "true" }, w.initials),
+          h("div", null, h("h4", null, w.org), h("span", { class: "when" }, w[lang].meta))),
+        h("ol", { class: "roles" }, w.roles.map((r) => {
+          const c = r[lang];
+          return h("li", { class: "role" },
+            h("h5", null, c.role),
+            h("span", { class: "when" }, c.when),
+            h("ul", { class: "bullets" }, c.points.map((p) => h("li", null, p))),
+            h("p", { class: "skill-line" }, h("strong", null, t.skillsLabel + (lang === "fr" ? " : " : ": ")), joined(r.skills, lang)));
+        })))));
     fill($("#education"), S.education.map((e) =>
       h("li", { class: "reveal" },
         h("h4", null, e.org),
@@ -100,6 +106,9 @@
     $("[data-k=summary]", fe).textContent = f.summary;
     fill($("[data-k=points]", fe), f.points.map((p) => h("li", null, p)));
     fill($("[data-k=tags]", fe), chips(S.featured.tags, lang));
+    const link = $("[data-k=link]", fe);
+    link.hidden = !S.featured.link;
+    if (S.featured.link) { link.href = S.featured.link; $("span", link).textContent = t.viewCode; }
 
     // Projets académiques
     fill($("#project-grid"), S.projects.map((p, i) => {
@@ -114,9 +123,11 @@
     }));
 
     // Compétences
-    fill($("#skill-grid"), S.skills.map((g) =>
-      h("div", { class: "card reveal" }, h("h3", null, g[lang]), h("ul", { class: "chips" }, chips(g.items, lang)))));
-    fill($("#soft"), chips(S.soft[lang], lang));
+    const skillRow = (title, text) => h("div", { class: "skill-row reveal" }, h("h3", null, title), h("p", null, text));
+    fill($("#skill-grid"), [
+      ...S.skills.map((g) => skillRow(g[lang], joined(g.items, lang))),
+      skillRow(t.softTitle, S.soft[lang].join(" · "))
+    ]);
 
     // Contact
     const mail = "mailto:" + S.email;
@@ -147,7 +158,7 @@
   const revealObs = "IntersectionObserver" in window
     ? new IntersectionObserver((entries) => {
         entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("in"); revealObs.unobserve(en.target); } });
-      }, { threshold: 0.12 })
+      }, { threshold: 0, rootMargin: "0px 0px -8% 0px" })
     : null;
   function observeReveals() {
     $$(".reveal:not(.in)").forEach((el) => (revealObs ? revealObs.observe(el) : el.classList.add("in")));

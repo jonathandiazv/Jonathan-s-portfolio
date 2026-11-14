@@ -30,6 +30,8 @@ window.SITE = {
       featured: "Projet phare",
       academicTitle: "Projets académiques",
       readMore: "Voir le détail",
+      skillsLabel: "Compétences",
+      viewCode: "Voir le code sur GitHub",
       close: "Fermer",
       skillsTitle: "Compétences",
       softTitle: "Savoir-être",
@@ -57,6 +59,8 @@ window.SITE = {
       featured: "Featured project",
       academicTitle: "Academic projects",
       readMore: "Read more",
+      skillsLabel: "Skills",
+      viewCode: "View the code on GitHub",
       close: "Close",
       skillsTitle: "Skills",
       softTitle: "Soft skills",
@@ -84,6 +88,8 @@ window.SITE = {
       featured: "Proyecto destacado",
       academicTitle: "Proyectos académicos",
       readMore: "Ver detalle",
+      skillsLabel: "Competencias",
+      viewCode: "Ver el código en GitHub",
       close: "Cerrar",
       skillsTitle: "Competencias",
       softTitle: "Habilidades blandas",
@@ -102,35 +108,38 @@ window.SITE = {
     fr: [
       "Apprenti-ingénieur passionné par la donnée, je conçois des architectures et des écosystèmes BI performants, enrichis par l'IA générative.",
       "Aujourd'hui en alternance chez Grenoble École de Management, j'y construis les flux de données, le data warehouse et un portefeuille de plus de 75 tableaux de bord Power BI, tout en pilotant l'intégration de l'IA générative dans l'écosystème BI. En parallèle, je poursuis mon cursus d'ingénieur à Télécom Saint-Étienne.",
-      "Ayant grandi au Salvador avec des racines belges et une scolarité au lycée français, j'aborde chaque problème avec un regard international — et en cinq langues."
+      "Ayant grandi au Salvador avec des racines belges et une scolarité au lycée français, j'aborde chaque problème avec un esprit analytique et un regard international."
     ],
     en: [
       "I'm an apprentice engineer passionate about data: I design high-performance BI architectures and ecosystems, enhanced with generative AI.",
       "As an apprentice at Grenoble École de Management, I build data pipelines, the data warehouse and a portfolio of 75+ Power BI dashboards, while leading the integration of generative AI into the BI ecosystem. Alongside this, I'm pursuing my engineering degree at Télécom Saint-Étienne.",
-      "Raised in El Salvador with Belgian roots and a French-school education, I approach every problem with an international mindset — in five languages."
+      "Raised in El Salvador with Belgian roots and a French-school education, I approach every problem with an analytical and international mindset."
     ],
     es: [
       "Soy ingeniero en formación apasionado por los datos: diseño arquitecturas y ecosistemas de BI de alto rendimiento, potenciados con IA generativa.",
       "En alternancia en Grenoble École de Management, construyo los flujos de datos, el data warehouse y un portafolio de más de 75 tableros Power BI, a la vez que lidero la integración de la IA generativa en el ecosistema BI. Paralelamente, curso mi carrera de ingeniería en Télécom Saint-Étienne.",
-      "Crecí en El Salvador, con raíces belgas y una escolaridad en el liceo francés: abordo cada problema con una mirada internacional — y en cinco idiomas."
+      "Crecí en El Salvador, con raíces belgas y una escolaridad en el liceo francés: abordo cada problema con un espíritu analítico y una mirada internacional."
     ]
   },
 
   facts: {
     fr: [
-      { k: "Basé à", v: "Saint-Étienne & Strasbourg" },
+      { k: "Âge", v: "22 ans" },
+      { k: "Basé à", v: "Lyon et périphérie" },
       { k: "Poste actuel", v: "Data & BI Engineer @ GEM" },
       { k: "École", v: "Télécom Saint-Étienne" },
       { k: "Origines", v: "Belgique · Salvador" }
     ],
     en: [
-      { k: "Based in", v: "Saint-Étienne & Strasbourg, FR" },
+      { k: "Age", v: "22" },
+      { k: "Based in", v: "Lyon area, France" },
       { k: "Current role", v: "Data & BI Engineer @ GEM" },
       { k: "School", v: "Télécom Saint-Étienne" },
       { k: "Roots", v: "Belgium · El Salvador" }
     ],
     es: [
-      { k: "Ubicación", v: "Saint-Étienne y Estrasburgo, Francia" },
+      { k: "Edad", v: "22 años" },
+      { k: "Ubicación", v: "Lyon y alrededores, Francia" },
       { k: "Puesto actual", v: "Data & BI Engineer @ GEM" },
       { k: "Escuela", v: "Télécom Saint-Étienne" },
       { k: "Orígenes", v: "Bélgica · El Salvador" }
@@ -152,75 +161,123 @@ window.SITE = {
     es: ["Fútbol", "Astronomía", "Deporte"]
   },
 
-  /* ---------- Expériences ---------- */
+  /* ---------- Expériences (format LinkedIn) ----------
+     Une entreprise = un bloc. "roles" liste les postes, du plus récent au plus ancien.
+     "skills" = compétences affichées sous chaque poste. */
   work: [
     {
       org: "Grenoble École de Management (GEM)",
-      fr: {
-        role: "Alternant Data & BI Engineer",
-        when: "Sept. 2024 — aujourd'hui · Grenoble",
-        points: [
-          "Construction et automatisation des flux entre HubSpot CRM, ERP, référentiels de données et data warehouse avec Semarchy XDI.",
-          "Conception et modélisation de l'architecture d'un nouveau data warehouse.",
-          "Développement, optimisation et maintenance de 75+ tableaux de bord Power BI pilotant les décisions stratégiques de 350+ utilisateurs internes.",
-          "Traduction des besoins métiers en spécifications techniques et fonctionnelles BI, en lien étroit avec les équipes.",
-          "Lead de l'étude comparative et du POC d'IA générative dans l'écosystème BI (Copilot sous Fabric, MCP Claude) : impact budgétaire, conformité RGPD, souveraineté des données — validation et déploiement de la première phase."
-        ]
-      },
-      en: {
-        role: "Data & BI Engineer (apprenticeship)",
-        when: "Sept. 2024 — present · Grenoble, France",
-        points: [
-          "Built and automated data flows between HubSpot CRM, ERP, master data and the data warehouse with Semarchy XDI.",
-          "Designed and modelled the architecture of a new data warehouse.",
-          "Develop, optimise and maintain 75+ Power BI dashboards driving strategic decisions for 350+ internal users.",
-          "Work closely with business teams to turn operational needs into technical and functional BI specifications.",
-          "Led the benchmark and POC for generative AI in the BI ecosystem (Copilot in Fabric, Claude MCP): budget impact, GDPR compliance and data sovereignty — first phase approved and deployed."
-        ]
-      },
-      es: {
-        role: "Data & BI Engineer (alternancia)",
-        when: "Sept. 2024 — actualidad · Grenoble, Francia",
-        points: [
-          "Construcción y automatización de flujos entre HubSpot CRM, ERP, datos maestros y el data warehouse con Semarchy XDI.",
-          "Diseño y modelado de la arquitectura de un nuevo data warehouse.",
-          "Desarrollo, optimización y mantenimiento de más de 75 tableros Power BI que orientan las decisiones estratégicas de más de 350 usuarios internos.",
-          "Colaboración estrecha con los equipos de negocio para traducir sus necesidades en especificaciones técnicas y funcionales de BI.",
-          "Líder del estudio comparativo y del POC de IA generativa en el ecosistema BI (Copilot en Fabric, MCP Claude): impacto presupuestario, cumplimiento del RGPD y soberanía de los datos — validación y despliegue de la primera fase."
-        ]
-      },
-      tags: ["Semarchy XDI", "Power BI", "Data Warehouse", "HubSpot", "Fabric", "GenAI"]
+      initials: "GEM",
+      fr: { meta: "Alternance · Grenoble, France" },
+      en: { meta: "Apprenticeship · Grenoble, France" },
+      es: { meta: "Alternancia · Grenoble, Francia" },
+      roles: [
+        {
+          fr: {
+            role: "Data & BI Engineer",
+            when: "Sept. 2025 — aujourd'hui",
+            points: [
+              "Construction et automatisation des flux entre HubSpot CRM, ERP, référentiels de données et data warehouse avec Semarchy XDI.",
+              "Conception et modélisation de l'architecture d'un nouveau data warehouse.",
+              "Développement, optimisation et maintenance de 75+ tableaux de bord Power BI pilotant les décisions stratégiques de 350+ utilisateurs internes.",
+              "Lead de l'étude comparative et du POC d'IA générative dans l'écosystème BI (Copilot sous Fabric, MCP Claude) : impact budgétaire, conformité RGPD, souveraineté des données — validation et déploiement de la première phase."
+            ]
+          },
+          en: {
+            role: "Data & BI Engineer",
+            when: "Sept. 2025 — present",
+            points: [
+              "Built and automated data flows between HubSpot CRM, ERP, master data and the data warehouse with Semarchy XDI.",
+              "Designed and modelled the architecture of a new data warehouse.",
+              "Develop, optimise and maintain 75+ Power BI dashboards driving strategic decisions for 350+ internal users.",
+              "Led the benchmark and POC for generative AI in the BI ecosystem (Copilot in Fabric, Claude MCP): budget impact, GDPR compliance and data sovereignty — first phase approved and deployed."
+            ]
+          },
+          es: {
+            role: "Data & BI Engineer",
+            when: "Sept. 2025 — actualidad",
+            points: [
+              "Construcción y automatización de flujos entre HubSpot CRM, ERP, datos maestros y el data warehouse con Semarchy XDI.",
+              "Diseño y modelado de la arquitectura de un nuevo data warehouse.",
+              "Desarrollo, optimización y mantenimiento de más de 75 tableros Power BI que orientan las decisiones estratégicas de más de 350 usuarios internos.",
+              "Líder del estudio comparativo y del POC de IA generativa en el ecosistema BI (Copilot en Fabric, MCP Claude): impacto presupuestario, cumplimiento del RGPD y soberanía de los datos — validación y despliegue de la primera fase."
+            ]
+          },
+          skills: ["Semarchy XDI", "Data warehouse", "Power BI", "Microsoft Fabric", "IA générative / Generative AI / IA generativa"]
+        },
+        {
+          fr: {
+            role: "Data & BI Analyst",
+            when: "Sept. 2024 — août 2025",
+            points: [
+              "Maintenance et amélioration des rapports BI gérés par le Data Management Office (Digital Factory).",
+              "Ateliers avec les équipes métiers pour recueillir les besoins et proposer des solutions adaptées.",
+              "Développement et test de nouveaux rapports Power BI ; création de règles de qualité des données et mise à jour des KPI.",
+              "Présentation des évolutions lors du comité BI mensuel."
+            ]
+          },
+          en: {
+            role: "Data & BI Analyst",
+            when: "Sept. 2024 — Aug. 2025",
+            points: [
+              "Maintained and enhanced the BI reports managed by the Data Management Office (Digital Factory).",
+              "Ran workshops with business units to gather requirements and propose tailored solutions.",
+              "Developed and tested new Power BI reports; created data quality rules and updated KPIs.",
+              "Presented updates at the monthly BI committee."
+            ]
+          },
+          es: {
+            role: "Data & BI Analyst",
+            when: "Sept. 2024 — ago. 2025",
+            points: [
+              "Mantenimiento y mejora de los informes BI gestionados por el Data Management Office (Digital Factory).",
+              "Talleres con los equipos de negocio para recoger necesidades y proponer soluciones a medida.",
+              "Desarrollo y prueba de nuevos informes Power BI; creación de reglas de calidad de datos y actualización de KPI.",
+              "Presentación de las novedades en el comité BI mensual."
+            ]
+          },
+          skills: ["Power BI", "SQL", "Modélisation de données / Data modelling / Modelado de datos", "Qualité des données / Data quality / Calidad de datos"]
+        }
+      ]
     },
     {
       org: "P&V Group",
-      fr: {
-        role: "Stage Data Analyst",
-        when: "Avr. — juin 2024 · Bruxelles",
-        points: [
-          "Développement d'un algorithme de matching pour associer des prospects aux clients actifs.",
-          "Tableau de bord Power BI de suivi de l'efficacité des campagnes marketing pour optimiser les investissements.",
-          "Analyses ad hoc pour la direction : extraction de données via SQL et SAS."
-        ]
-      },
-      en: {
-        role: "Data Analyst Intern",
-        when: "Apr. — June 2024 · Brussels, Belgium",
-        points: [
-          "Developed a matching algorithm linking prospects to active customers.",
-          "Built a Power BI dashboard tracking marketing campaign effectiveness to optimise spend.",
-          "Ad hoc analyses for senior management: data extraction with SQL and SAS."
-        ]
-      },
-      es: {
-        role: "Prácticas de Data Analyst",
-        when: "Abr. — jun. 2024 · Bruselas, Bélgica",
-        points: [
-          "Desarrollo de un algoritmo de matching para asociar prospectos con clientes activos.",
-          "Tablero Power BI de seguimiento de la eficacia de las campañas de marketing para optimizar la inversión.",
-          "Análisis ad hoc para la dirección: extracción de datos con SQL y SAS."
-        ]
-      },
-      tags: ["Power BI", "SQL", "SAS", "Matching"]
+      initials: "P&V",
+      fr: { meta: "Stage · Bruxelles, Belgique" },
+      en: { meta: "Internship · Brussels, Belgium" },
+      es: { meta: "Prácticas · Bruselas, Bélgica" },
+      roles: [
+        {
+          fr: {
+            role: "Data Analyst",
+            when: "Avr. — juin 2024",
+            points: [
+              "Développement d'un algorithme de matching pour associer des prospects aux clients actifs.",
+              "Tableau de bord Power BI de suivi de l'efficacité des campagnes marketing pour optimiser les investissements.",
+              "Analyses ad hoc pour la direction : extraction de données via SQL et SAS."
+            ]
+          },
+          en: {
+            role: "Data Analyst",
+            when: "Apr. — June 2024",
+            points: [
+              "Developed a matching algorithm linking prospects to active customers.",
+              "Built a Power BI dashboard tracking marketing campaign effectiveness to optimise spend.",
+              "Ad hoc analyses for senior management: data extraction with SQL and SAS."
+            ]
+          },
+          es: {
+            role: "Data Analyst",
+            when: "Abr. — jun. 2024",
+            points: [
+              "Desarrollo de un algoritmo de matching para asociar prospectos con clientes activos.",
+              "Tablero Power BI de seguimiento de la eficacia de las campañas de marketing para optimizar la inversión.",
+              "Análisis ad hoc para la dirección: extracción de datos con SQL y SAS."
+            ]
+          },
+          skills: ["Power BI", "SQL", "SAS", "Matching"]
+        }
+      ]
     }
   ],
 
@@ -249,7 +306,7 @@ window.SITE = {
   /* ---------- Projet phare ---------- */
   featured: {
     fr: {
-      title: "Système d'inspection optique par IA",
+      title: "SCOT — Système de contrôle optique par IA",
       meta: "Chef de projet & lead technique data · Sept. 2025 — aujourd'hui · Sponsor : Télécom Saint-Étienne",
       summary: "Conception d'un système d'inspection optique basé sur l'IA pour détecter et classifier automatiquement des anomalies microscopiques sur des plaques de verre industrielles.",
       points: [
@@ -259,7 +316,7 @@ window.SITE = {
       ]
     },
     en: {
-      title: "AI-powered optical inspection system",
+      title: "SCOT — AI-powered optical inspection",
       meta: "Project manager & data tech lead · Sept. 2025 — present · Sponsor: Télécom Saint-Étienne",
       summary: "Designing an AI-based optical inspection system that automatically detects and classifies microscopic defects on industrial glass plates.",
       points: [
@@ -269,7 +326,7 @@ window.SITE = {
       ]
     },
     es: {
-      title: "Sistema de inspección óptica con IA",
+      title: "SCOT — Sistema de control óptico con IA",
       meta: "Jefe de proyecto y líder técnico de datos · Sept. 2025 — actualidad · Patrocinador: Télécom Saint-Étienne",
       summary: "Diseño de un sistema de inspección óptica basado en IA para detectar y clasificar automáticamente anomalías microscópicas en placas de vidrio industriales.",
       points: [
@@ -278,7 +335,8 @@ window.SITE = {
         "Entrega de un demostrador industrial: adquisición de imágenes y procesamiento automatizado en tiempo real para la toma de decisiones."
       ]
     },
-    tags: ["Python", "CNN", "Computer vision", "Azure", "Gestion de projet / Project management / Gestión de proyectos"]
+    link: "https://github.com/jonathandiazv/SCOT",
+    tags: ["Python", "PyTorch", "CNN", "Streamlit", "Azure", "Computer vision", "Gestion de projet / Project management / Gestión de proyectos"]
   },
 
   /* ---------- Projets académiques ---------- */

@@ -145,12 +145,10 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.2; margin: 0; }
 }
 .card h3 { font-size: 1rem; margin-bottom: 1rem; letter-spacing: .02em; }
 
-.chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
-.chips li {
-  padding: .35rem .8rem; border-radius: 999px; font-size: .88rem;
-  background: var(--surface-2); border: 1px solid var(--border);
-}
-.chips.small li { font-size: .78rem; padding: .25rem .65rem; }
+/* Listes de mots-clés : texte simple séparé par des points médians */
+.chips { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; row-gap: .2rem; color: #cfcdd9; }
+.chips li:not(:last-child)::after { content: "·"; margin: 0 .6rem; color: var(--accent); }
+.chips.small { font-size: .85rem; color: var(--muted); }
 
 /* Apparition au défilement */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
@@ -194,6 +192,33 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.2; margin: 0; }
 .timeline.compact { gap: 1.5rem; }
 .timeline.compact h4 { font-size: 1rem; }
 .timeline.compact p { margin: .2rem 0 0; color: #cfcdd9; font-size: .93rem; }
+/* Expériences façon LinkedIn : entreprise puis postes reliés */
+.companies { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.5rem; }
+.co-head { display: flex; align-items: center; gap: .9rem; margin-bottom: 1.1rem; }
+.co-logo {
+  flex: none; width: 48px; height: 48px; border-radius: 10px;
+  display: grid; place-items: center;
+  background: var(--surface-2); border: 1px solid var(--border);
+  font: 700 .78rem var(--font-title); letter-spacing: .02em;
+}
+.co-head h4 { margin: 0; font-family: var(--font-title); font-size: 1.15rem; }
+.companies .when { display: block; color: var(--muted); font-size: .85rem; }
+.co-head .when { margin: 0; }
+.roles { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.6rem; }
+.role { position: relative; padding-left: 3.6rem; }
+.role::before {
+  content: ""; position: absolute; left: calc(24px - 5px); top: .5rem;
+  width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
+}
+.role:not(:last-child)::after {
+  content: ""; position: absolute; left: 23px; top: 1.35rem; bottom: -1.6rem;
+  width: 2px; background: var(--border);
+}
+.role h5 { margin: 0; font: 600 1.02rem var(--font-title); }
+.role .when { margin: .1rem 0 .55rem; }
+.skill-line { margin: 0; font-size: .88rem; color: var(--muted); }
+.skill-line strong { color: var(--text); font-weight: 600; }
+
 .bullets { margin: 0 0 .9rem; padding-left: 1.1rem; color: #d3d2de; }
 .bullets li { margin-bottom: .35rem; }
 .bullets li::marker { color: var(--accent); }
@@ -262,7 +287,15 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.2; margin: 0; }
 }
 
 /* ---------- Skills ---------- */
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.skills-table { border-top: 1px solid var(--border); }
+.skill-row {
+  display: grid; grid-template-columns: 260px 1fr; gap: 1.5rem; align-items: baseline;
+  padding: 1.15rem 0; border-bottom: 1px solid var(--border);
+}
+.skill-row h3 { font-size: .8rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.skill-row p { margin: 0; font-size: 1.02rem; color: var(--text); }
+
+.repo { margin-top: 1.25rem; }
 
 /* ---------- Contact ---------- */
 .contact { text-align: center; padding-bottom: 4rem; }
@@ -334,7 +367,11 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.2; margin: 0; }
 }
 @media (max-width: 480px) {
   .section { padding: 4.5rem 1rem 1.5rem; }
-  .projects-grid, .skills-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .skill-row { grid-template-columns: 1fr; gap: .3rem; }
+  .role { padding-left: 2.2rem; }
+  .role::before { left: 4px; }
+  .role:not(:last-child)::after { left: 8px; }
   .dock { gap: 0; padding: .3rem; }
   .dock:hover { gap: 0; padding: .3rem; }
   .dock a, .dock button { width: 38px; height: 38px; }
