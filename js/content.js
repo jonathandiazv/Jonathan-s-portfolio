@@ -31,6 +31,7 @@ window.SITE = {
       academicTitle: "Projets académiques",
       readMore: "Voir le détail",
       skillsLabel: "Compétences",
+      upcoming: "Stage à venir",
       viewCode: "Voir le projet sur GitHub",
       bench: {
         title: "Principe : la strioscopie",
@@ -65,6 +66,7 @@ window.SITE = {
       academicTitle: "Academic projects",
       readMore: "Read more",
       skillsLabel: "Skills",
+      upcoming: "Incoming internship",
       viewCode: "View the project on GitHub",
       bench: {
         title: "How it works: schlieren imaging",
@@ -99,6 +101,7 @@ window.SITE = {
       academicTitle: "Proyectos académicos",
       readMore: "Ver detalle",
       skillsLabel: "Competencias",
+      upcoming: "Pasantía próxima",
       viewCode: "Ver el proyecto en GitHub",
       bench: {
         title: "Principio: la estrioscopía",
@@ -184,6 +187,7 @@ window.SITE = {
       org: "Grenoble École de Management (GEM)",
       initials: "GEM",
       logo: "assets/img/logo-gem.png",
+      url: "https://www.grenoble-em.com",
       fr: { meta: "Alternance · Grenoble, France" },
       en: { meta: "Apprenticeship · Grenoble, France" },
       es: { meta: "Alternancia · Grenoble, Francia" },
@@ -260,6 +264,7 @@ window.SITE = {
       org: "P&V Group",
       initials: "P&V",
       logo: "assets/img/logo-pv.png",
+      url: "https://pvgroup.coop/fr",
       fr: { meta: "Stage · Bruxelles, Belgique" },
       en: { meta: "Internship · Brussels, Belgium" },
       es: { meta: "Prácticas · Bruselas, Bélgica" },

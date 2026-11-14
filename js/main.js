@@ -83,17 +83,23 @@
     fill($("#work"), S.work.map((w) =>
       h("li", { class: "company reveal" },
         h("div", { class: "co-head" },
-          w.logo
-            ? h("img", { class: "co-logo", src: w.logo, alt: "", width: "48", height: "48" })
-            : h("span", { class: "co-logo", "aria-hidden": "true" }, w.initials),
+          (() => {
+            const logo = w.logo
+              ? h("img", { class: "co-logo", src: w.logo, alt: "", width: "48", height: "48" })
+              : h("span", { class: "co-logo", "aria-hidden": "true" }, w.initials);
+            // Logo cliquable vers le site de l'entreprise (nouvel onglet)
+            return w.url
+              ? h("a", { class: "co-link", href: w.url, target: "_blank", rel: "noopener", "aria-label": w.org, title: w.org }, logo)
+              : logo;
+          })(),
           h("div", null, h("h4", null, w.org), h("span", { class: "when" }, w[lang].meta))),
         h("ol", { class: "roles" }, w.roles.map((r) => {
           const c = r[lang];
-          return h("li", { class: "role" },
-            h("h5", null, c.role),
+          return h("li", { class: "role" + (r.upcoming ? " upcoming" : "") },
+            h("h5", null, c.role, r.upcoming && h("span", { class: "badge" }, t.upcoming)),
             h("span", { class: "when" }, c.when),
-            h("ul", { class: "bullets" }, c.points.map((p) => h("li", null, p))),
-            h("p", { class: "skill-line" }, h("strong", null, t.skillsLabel + (lang === "fr" ? " : " : ": ")), joined(r.skills, lang)));
+            c.points.length > 0 && h("ul", { class: "bullets" }, c.points.map((p) => h("li", null, p))),
+            r.skills.length > 0 && h("p", { class: "skill-line" }, h("strong", null, t.skillsLabel + (lang === "fr" ? " : " : ": ")), joined(r.skills, lang)));
         })))));
     fill($("#education"), S.education.map((e) =>
       h("li", { class: "reveal" },

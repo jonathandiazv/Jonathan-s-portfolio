@@ -202,6 +202,8 @@ h1, h2, h3 { font-family: var(--font-title); line-height: 1.2; margin: 0; }
   font: 700 .78rem var(--font-title); letter-spacing: .02em;
 }
 img.co-logo { object-fit: cover; background: #fff; padding: 0; }
+.co-link { flex: none; display: block; border-radius: 10px; transition: transform .2s ease, box-shadow .2s ease; }
+.co-link:hover { transform: translateY(-2px); box-shadow: 0 0 0 2px var(--accent), 0 6px 18px rgba(255,122,89,.25); }
 .co-head h4 { margin: 0; font-family: var(--font-title); font-size: 1.15rem; }
 .companies .when { display: block; color: var(--muted); font-size: .85rem; }
 .co-head .when { margin: 0; }
@@ -215,7 +217,13 @@ img.co-logo { object-fit: cover; background: #fff; padding: 0; }
   content: ""; position: absolute; left: 23px; top: 1.35rem; bottom: -1.6rem;
   width: 2px; background: var(--border);
 }
-.role h5 { margin: 0; font: 600 1.02rem var(--font-title); }
+.role h5 { margin: 0; font: 600 1.02rem var(--font-title); display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .6rem; }
+.badge {
+  font: 600 .68rem var(--font-body); letter-spacing: .1em; text-transform: uppercase;
+  padding: .2rem .55rem; border-radius: 6px;
+  color: var(--accent-2); border: 1px solid rgba(167,139,250,.45); background: rgba(167,139,250,.08);
+}
+.role.upcoming::before { background: transparent; border: 2px dashed var(--accent-2); width: 12px; height: 12px; left: calc(24px - 6px); }
 .role .when { margin: .1rem 0 .55rem; }
 .skill-line { margin: 0; font-size: .88rem; color: var(--muted); }
 .skill-line strong { color: var(--text); font-weight: 600; }
@@ -410,6 +418,7 @@ img.co-logo { object-fit: cover; background: #fff; padding: 0; }
   .skill-row { grid-template-columns: 1fr; gap: .3rem; }
   .role { padding-left: 2.2rem; }
   .role::before { left: 4px; }
+  .role.upcoming::before { left: 3px; }
   .role:not(:last-child)::after { left: 8px; }
   .dock { gap: 0; padding: .3rem; }
   .dock:hover { gap: 0; padding: .3rem; }
