@@ -1,24 +1,24 @@
 /* ==========================================================================
    CONTENU DU SITE — c'est le SEUL fichier à modifier pour mettre à jour le site.
-   Chaque texte existe en "fr" et "en". Les listes (expériences, projets...)
+   Chaque texte existe en "fr", "en" et "es". Les listes (expériences, projets...)
    s'affichent automatiquement dans l'ordre où elles sont écrites ici.
-   Astuce : dans les listes de tags/compétences, "Texte FR / Text EN" affiche
-   la partie gauche en français et la partie droite en anglais.
+   Astuce : dans les listes de tags/compétences, "Texte FR / Text EN / Texto ES"
+   affiche la bonne partie selon la langue (un texte sans " / " est commun).
    ========================================================================== */
 
 window.SITE = {
   name: "Jonathan Díaz-Vreys",
   email: "jonathanjosediazvreys@gmail.com",
   photo: "assets/img/jonathan.png",
+  langs: ["fr", "en", "es"],
 
   /* ---------- Textes d'interface ---------- */
   ui: {
     fr: {
       role: "Ingénieur Data, BI & IA — en alternance",
       quote: "« Les données sont les étoiles qui guident les entreprises à travers l'immense univers des opportunités. »",
-      status: "Ouvert aux opportunités",
       scroll: "Découvrir",
-      nav: { home: "Accueil", about: "À propos", journey: "Parcours", projects: "Projets", skills: "Compétences", contact: "Contact", lang: "Switch to English" },
+      nav: { home: "Accueil", about: "À propos", journey: "Parcours", projects: "Projets", skills: "Compétences", contact: "Contact", lang: "Langue" },
       aboutTitle: "À propos",
       factsTitle: "En bref",
       langsTitle: "Langues",
@@ -44,9 +44,8 @@ window.SITE = {
     en: {
       role: "Data, BI & AI Engineer — apprentice",
       quote: "“Data are the stars guiding businesses through the vast universe of opportunities.”",
-      status: "Open to opportunities",
       scroll: "Explore",
-      nav: { home: "Home", about: "About", journey: "Journey", projects: "Projects", skills: "Skills", contact: "Contact", lang: "Passer en français" },
+      nav: { home: "Home", about: "About", journey: "Journey", projects: "Projects", skills: "Skills", contact: "Contact", lang: "Language" },
       aboutTitle: "About me",
       factsTitle: "At a glance",
       langsTitle: "Languages",
@@ -68,6 +67,33 @@ window.SITE = {
       copied: "Address copied!",
       footer: "Designed and built by Jonathan Díaz-Vreys",
       loading: "loading · "
+    },
+    es: {
+      role: "Ingeniero de Datos, BI e IA — en alternancia",
+      quote: "«Los datos son las estrellas que guían a las empresas a través del vasto universo de oportunidades.»",
+      scroll: "Descubrir",
+      nav: { home: "Inicio", about: "Sobre mí", journey: "Trayectoria", projects: "Proyectos", skills: "Competencias", contact: "Contacto", lang: "Idioma" },
+      aboutTitle: "Sobre mí",
+      factsTitle: "En resumen",
+      langsTitle: "Idiomas",
+      hobbiesTitle: "Más allá de los datos",
+      journeyTitle: "Trayectoria",
+      workTitle: "Experiencia",
+      eduTitle: "Formación",
+      projectsTitle: "Proyectos",
+      featured: "Proyecto destacado",
+      academicTitle: "Proyectos académicos",
+      readMore: "Ver detalle",
+      close: "Cerrar",
+      skillsTitle: "Competencias",
+      softTitle: "Habilidades blandas",
+      contactTitle: "Contacto",
+      contactLead: "¿Un proyecto de datos, una oportunidad de alternancia o simplemente una pregunta? Escríbeme.",
+      contactCta: "Enviarme un correo",
+      copy: "Copiar dirección",
+      copied: "¡Dirección copiada!",
+      footer: "Diseñado y desarrollado por Jonathan Díaz-Vreys",
+      loading: "cargando · "
     }
   },
 
@@ -82,6 +108,11 @@ window.SITE = {
       "I'm an apprentice engineer passionate about data: I design high-performance BI architectures and ecosystems, enhanced with generative AI.",
       "As an apprentice at Grenoble École de Management, I build data pipelines, the data warehouse and a portfolio of 75+ Power BI dashboards, while leading the integration of generative AI into the BI ecosystem. Alongside this, I'm pursuing my engineering degree at Télécom Saint-Étienne.",
       "Raised in El Salvador with Belgian roots and a French-school education, I approach every problem with an international mindset — in five languages."
+    ],
+    es: [
+      "Soy ingeniero en formación apasionado por los datos: diseño arquitecturas y ecosistemas de BI de alto rendimiento, potenciados con IA generativa.",
+      "En alternancia en Grenoble École de Management, construyo los flujos de datos, el data warehouse y un portafolio de más de 75 tableros Power BI, a la vez que lidero la integración de la IA generativa en el ecosistema BI. Paralelamente, curso mi carrera de ingeniería en Télécom Saint-Étienne.",
+      "Crecí en El Salvador, con raíces belgas y una escolaridad en el liceo francés: abordo cada problema con una mirada internacional — y en cinco idiomas."
     ]
   },
 
@@ -97,21 +128,28 @@ window.SITE = {
       { k: "Current role", v: "Data & BI Engineer @ GEM" },
       { k: "School", v: "Télécom Saint-Étienne" },
       { k: "Roots", v: "Belgium · El Salvador" }
+    ],
+    es: [
+      { k: "Ubicación", v: "Saint-Étienne y Estrasburgo, Francia" },
+      { k: "Puesto actual", v: "Data & BI Engineer @ GEM" },
+      { k: "Escuela", v: "Télécom Saint-Étienne" },
+      { k: "Orígenes", v: "Bélgica · El Salvador" }
     ]
   },
 
   /* level = niveau CECRL ; score = 1 à 6 (A1→C2) pour la jauge */
   languages: [
-    { fr: "Espagnol", en: "Spanish", level: "C2", score: 6 },
-    { fr: "Français", en: "French", level: "C2", score: 6 },
-    { fr: "Anglais", en: "English", level: "C1", score: 5 },
-    { fr: "Néerlandais", en: "Dutch", level: "B2", score: 4 },
-    { fr: "Portugais", en: "Portuguese", level: "B2", score: 4 }
+    { fr: "Espagnol", en: "Spanish", es: "Español", level: "C2", score: 6 },
+    { fr: "Français", en: "French", es: "Francés", level: "C2", score: 6 },
+    { fr: "Anglais", en: "English", es: "Inglés", level: "C1", score: 5 },
+    { fr: "Néerlandais", en: "Dutch", es: "Neerlandés", level: "B2", score: 4 },
+    { fr: "Portugais", en: "Portuguese", es: "Portugués", level: "B2", score: 4 }
   ],
 
   hobbies: {
     fr: ["Football", "Astronomie", "Sport"],
-    en: ["Football", "Astronomy", "Sports"]
+    en: ["Football", "Astronomy", "Sports"],
+    es: ["Fútbol", "Astronomía", "Deporte"]
   },
 
   /* ---------- Expériences ---------- */
@@ -140,6 +178,17 @@ window.SITE = {
           "Led the benchmark and POC for generative AI in the BI ecosystem (Copilot in Fabric, Claude MCP): budget impact, GDPR compliance and data sovereignty — first phase approved and deployed."
         ]
       },
+      es: {
+        role: "Data & BI Engineer (alternancia)",
+        when: "Sept. 2024 — actualidad · Grenoble, Francia",
+        points: [
+          "Construcción y automatización de flujos entre HubSpot CRM, ERP, datos maestros y el data warehouse con Semarchy XDI.",
+          "Diseño y modelado de la arquitectura de un nuevo data warehouse.",
+          "Desarrollo, optimización y mantenimiento de más de 75 tableros Power BI que orientan las decisiones estratégicas de más de 350 usuarios internos.",
+          "Colaboración estrecha con los equipos de negocio para traducir sus necesidades en especificaciones técnicas y funcionales de BI.",
+          "Líder del estudio comparativo y del POC de IA generativa en el ecosistema BI (Copilot en Fabric, MCP Claude): impacto presupuestario, cumplimiento del RGPD y soberanía de los datos — validación y despliegue de la primera fase."
+        ]
+      },
       tags: ["Semarchy XDI", "Power BI", "Data Warehouse", "HubSpot", "Fabric", "GenAI"]
     },
     {
@@ -162,6 +211,15 @@ window.SITE = {
           "Ad hoc analyses for senior management: data extraction with SQL and SAS."
         ]
       },
+      es: {
+        role: "Prácticas de Data Analyst",
+        when: "Abr. — jun. 2024 · Bruselas, Bélgica",
+        points: [
+          "Desarrollo de un algoritmo de matching para asociar prospectos con clientes activos.",
+          "Tablero Power BI de seguimiento de la eficacia de las campañas de marketing para optimizar la inversión.",
+          "Análisis ad hoc para la dirección: extracción de datos con SQL y SAS."
+        ]
+      },
       tags: ["Power BI", "SQL", "SAS", "Matching"]
     }
   ],
@@ -171,17 +229,20 @@ window.SITE = {
     {
       org: "Télécom Saint-Étienne",
       fr: { title: "Diplôme d'ingénieur — Data engineering (informatique & électronique)", when: "2025 — 2028" },
-      en: { title: "Engineering degree — Data engineering (computer science & electronics)", when: "2025 — 2028" }
+      en: { title: "Engineering degree — Data engineering (computer science & electronics)", when: "2025 — 2028" },
+      es: { title: "Título de ingeniero — Ingeniería de datos (informática y electrónica)", when: "2025 — 2028" }
     },
     {
       org: "Université Grenoble Alpes — IUT2",
       fr: { title: "BUT Science des Données — Visualisation et conception d'outils décisionnels", when: "2022 — 2025" },
-      en: { title: "Bachelor in Data Science (BUT SD) — Visualisation & decision-support tools", when: "2022 — 2025" }
+      en: { title: "Bachelor in Data Science (BUT SD) — Visualisation & decision-support tools", when: "2022 — 2025" },
+      es: { title: "Licenciatura en Ciencia de Datos (BUT SD) — Visualización y herramientas de decisión", when: "2022 — 2025" }
     },
     {
       org: "Lycée français de San Salvador",
       fr: { title: "Baccalauréat général — Mathématiques & Physique, mention Assez Bien", when: "2022" },
-      en: { title: "French Baccalaureate — Mathematics & Physics, with honours", when: "2022" }
+      en: { title: "French Baccalaureate — Mathematics & Physics, with honours", when: "2022" },
+      es: { title: "Bachillerato francés — Matemáticas y Física, con mención", when: "2022" }
     }
   ],
 
@@ -207,7 +268,17 @@ window.SITE = {
         "Delivering an industrial demonstrator: image acquisition and real-time automated processing for decision-making."
       ]
     },
-    tags: ["Python", "CNN", "Computer vision", "Azure", "Gestion de projet / PM"]
+    es: {
+      title: "Sistema de inspección óptica con IA",
+      meta: "Jefe de proyecto y líder técnico de datos · Sept. 2025 — actualidad · Patrocinador: Télécom Saint-Étienne",
+      summary: "Diseño de un sistema de inspección óptica basado en IA para detectar y clasificar automáticamente anomalías microscópicas en placas de vidrio industriales.",
+      points: [
+        "Dirección de un equipo multidisciplinario de 5 ingenieros en formación (fotónica, datos, software): presupuesto, planificación y hoja de ruta técnica.",
+        "Pipeline completo de clasificación de defectos con redes neuronales convolucionales (CNN) en Python, sobre una arquitectura Azure.",
+        "Entrega de un demostrador industrial: adquisición de imágenes y procesamiento automatizado en tiempo real para la toma de decisiones."
+      ]
+    },
+    tags: ["Python", "CNN", "Computer vision", "Azure", "Gestion de projet / Project management / Gestión de proyectos"]
   },
 
   /* ---------- Projets académiques ---------- */
@@ -215,7 +286,7 @@ window.SITE = {
     {
       img: "assets/img/proj-gf38.jpg",
       year: "2024",
-      tools: ["R", "RShiny", "ACP & clustering / PCA & clustering"],
+      tools: ["R", "RShiny", "ACP & clustering / PCA & clustering / ACP y clustering"],
       fr: {
         tag: "Statistiques",
         title: "Analyse multivariée — Grenoble Foot 38",
@@ -235,12 +306,22 @@ window.SITE = {
           ["Data", "Per-match individual athletic data for GF38 (2023/2024 season) and detailed Ligue 1 and Ligue 2 team metrics (2022/2023), aggregated and normalised by matches played."],
           ["Results", "Analysis in R, delivered as an RShiny app: on high-intensity sprints GF38 can compete with Ligue 1, and some players already have a Ligue 1 physical profile. Overall the team is behind Ligue 1 but above the Ligue 2 average."]
         ]
+      },
+      es: {
+        tag: "Estadística",
+        title: "Análisis multivariante — Grenoble Foot 38",
+        short: "Evaluar el rendimiento atlético de los jugadores del GF38 frente a los equipos de Ligue 1 y Ligue 2.",
+        sections: [
+          ["Objetivo", "Comparar el rendimiento físico de los jugadores y del equipo del GF38 con el de la Ligue 1 y la Ligue 2, y entregar una herramienta automatizada de apoyo a la decisión."],
+          ["Datos", "Datos atléticos individuales por partido del GF38 (temporada 2023/2024) y métricas detalladas de los equipos de Ligue 1 y Ligue 2 (2022/2023), agregados y normalizados según el número de partidos jugados."],
+          ["Resultados", "Análisis realizado en R y presentado en una aplicación RShiny: en los sprints de alta intensidad, el GF38 tiene potencial para competir con la Ligue 1, y algunos jugadores ya tienen ese perfil físico. En conjunto, el equipo queda por debajo de la Ligue 1 pero por encima de la media de la Ligue 2."]
+        ]
       }
     },
     {
       img: "assets/img/proj-sfo.jpg",
       year: "2023",
-      tools: ["R", "Séries temporelles", "Holt-Winters"],
+      tools: ["R", "Séries temporelles / Time series / Series temporales", "Holt-Winters"],
       fr: {
         tag: "Statistiques",
         title: "Prévision du trafic — aéroport de San Francisco",
@@ -260,12 +341,22 @@ window.SITE = {
           ["Methods", "Parametric trend, exponential smoothing and Holt-Winters (additive and multiplicative), compared on accuracy and ability to capture trend and seasonality."],
           ["Results", "Forecasts confirm historical trends continue and residual analysis validates the fit — useful input for airport planning."]
         ]
+      },
+      es: {
+        tag: "Estadística",
+        title: "Previsión de tráfico — aeropuerto de San Francisco",
+        short: "Modelar y prever a corto plazo la afluencia de pasajeros en SFO.",
+        sections: [
+          ["Objetivo", "Desarrollar y evaluar varios modelos de previsión a corto plazo del número de pasajeros del aeropuerto internacional de San Francisco a partir de datos históricos."],
+          ["Métodos", "Tendencia paramétrica, suavizado exponencial y Holt-Winters (aditivo y multiplicativo), comparados según su precisión y su capacidad para captar tendencia y estacionalidad."],
+          ["Resultados", "Las previsiones confirman la continuidad de las tendencias históricas y el análisis de residuos valida el ajuste — información útil para la planificación aeroportuaria."]
+        ]
       }
     },
     {
       img: "assets/img/proj-dwh.jpg",
       year: "2023",
-      tools: ["Talend", "MySQL", "Modèle en étoile"],
+      tools: ["Talend", "MySQL", "Modèle en étoile / Star schema / Modelo en estrella"],
       fr: {
         tag: "Data engineering",
         title: "Data warehouse pour la SPA du Dauphiné",
@@ -284,6 +375,16 @@ window.SITE = {
           ["Objective", "Set up a ROLAP system to analyse adoption and operations data for the Dauphiné animal protection society (SPA)."],
           ["Build", "Talend ETL (xlsx and xml extraction, transformations such as stay-cost calculation, loading into MySQL) and a star-schema dimensional model ensuring integrity and consistency."],
           ["Results", "SQL queries answering the shelter's questions: busiest adoption months, average stay cost, adopter profiles — plus leads for future analyses."]
+        ]
+      },
+      es: {
+        tag: "Data engineering",
+        title: "Data warehouse para un refugio de animales",
+        short: "Integración de múltiples fuentes en un almacén ROLAP con Talend.",
+        sections: [
+          ["Objetivo", "Implementar un sistema ROLAP para analizar los datos de adopción y gestión de la Sociedad Protectora de Animales del Dauphiné (SPA)."],
+          ["Realización", "Proceso ETL con Talend (extracción de archivos xlsx y xml, transformaciones como el cálculo del costo de estancia, carga en MySQL) y modelo dimensional en estrella que garantiza integridad y coherencia."],
+          ["Resultados", "Consultas SQL que responden a las preguntas de la SPA: meses con más adopciones, costo medio de estancia, perfiles de adoptantes — con pistas para análisis futuros."]
         ]
       }
     },
@@ -308,12 +409,21 @@ window.SITE = {
           ["Objective", "Build interactive reporting on French household energy consumption."],
           ["Build", "Power BI dashboards: year-over-year comparison, consumption by season and weekday, off-peak / peak split and related cost."]
         ]
+      },
+      es: {
+        tag: "Data viz",
+        title: "Reporting Power BI — consumo de energía",
+        short: "Visualizar el consumo energético de los hogares franceses.",
+        sections: [
+          ["Objetivo", "Construir un reporting interactivo sobre el consumo de energía de los hogares franceses."],
+          ["Realización", "Tableros Power BI: comparación anual, consumo por estación y por día, reparto horas valle / horas punta y costo asociado."]
+        ]
       }
     },
     {
       img: "assets/img/proj-geo.jpg",
       year: "2024",
-      tools: ["ArcGIS", "Collecte de données", "SIG"],
+      tools: ["ArcGIS", "Collecte de données / Data collection / Recolección de datos", "SIG / GIS / SIG"],
       fr: {
         tag: "Data viz",
         title: "Dashboard géospatial — Grenoble",
@@ -331,21 +441,31 @@ window.SITE = {
           ["Objective", "Collect field data and produce a geospatial dashboard to monitor neighbourhood waste collection points in Grenoble."],
           ["Build", "Interactive map and key indicators in ArcGIS (number of points, average condition, costs) to support management."]
         ]
+      },
+      es: {
+        tag: "Data viz",
+        title: "Tablero geoespacial — Grenoble",
+        short: "Recolección de datos y tablero cartográfico en ArcGIS.",
+        sections: [
+          ["Objetivo", "Recolectar datos de campo y producir un tablero geoespacial para el seguimiento de los puntos de recogida de residuos de proximidad en Grenoble."],
+          ["Realización", "Mapa interactivo e indicadores clave en ArcGIS (número de puntos, estado medio, costos) para facilitar la gestión."]
+        ]
       }
     }
   ],
 
   /* ---------- Compétences ---------- */
   skills: [
-    { fr: "Data engineering & Big Data", en: "Data engineering & Big Data", items: ["ETL — Talend", "Semarchy XDI", "Apache Spark", "Azure Cloud", "Data warehousing"] },
-    { fr: "BI & Data viz", en: "BI & Data viz", items: ["Power BI (expert)", "Tableau", "Modélisation dimensionnelle / Dimensional modelling", "ArcGIS"] },
-    { fr: "Programmation", en: "Programming", items: ["Python", "SQL", "NoSQL", "C++", "R", "SAS", "VBA"] },
-    { fr: "Statistiques & IA", en: "Statistics & AI", items: ["Régression / Regression", "Séries temporelles / Time series", "Classification", "Data mining", "Machine learning", "Deep learning (CNN)", "IA générative / GenAI"] },
-    { fr: "Environnements", en: "Environments", items: ["Linux", "Windows", "Git", "TFS", "Excel avancé / Advanced Excel"] }
+    { fr: "Data engineering & Big Data", en: "Data engineering & Big Data", es: "Ingeniería de datos y Big Data", items: ["ETL — Talend", "Semarchy XDI", "Apache Spark", "Azure Cloud", "Data warehousing"] },
+    { fr: "BI & Data viz", en: "BI & Data viz", es: "BI y visualización", items: ["Power BI (expert) / Power BI (expert) / Power BI (experto)", "Tableau", "Modélisation dimensionnelle / Dimensional modelling / Modelado dimensional", "ArcGIS"] },
+    { fr: "Programmation", en: "Programming", es: "Programación", items: ["Python", "SQL", "NoSQL", "C++", "R", "SAS", "VBA"] },
+    { fr: "Statistiques & IA", en: "Statistics & AI", es: "Estadística e IA", items: ["Régression / Regression / Regresión", "Séries temporelles / Time series / Series temporales", "Classification / Classification / Clasificación", "Data mining", "Machine learning", "Deep learning (CNN)", "IA générative / GenAI / IA generativa"] },
+    { fr: "Environnements", en: "Environments", es: "Entornos", items: ["Linux", "Windows", "Git", "TFS", "Excel avancé / Advanced Excel / Excel avanzado"] }
   ],
 
   soft: {
     fr: ["Polyglotte", "Persévérant", "Adaptable", "Autonome", "Résolution de problèmes", "Créatif", "Leadership"],
-    en: ["Polyglot", "Persistent", "Adaptable", "Autonomous", "Problem solving", "Creative", "Leadership"]
+    en: ["Polyglot", "Persistent", "Adaptable", "Autonomous", "Problem solving", "Creative", "Leadership"],
+    es: ["Políglota", "Perseverante", "Adaptable", "Autónomo", "Resolución de problemas", "Creativo", "Liderazgo"]
   }
 };

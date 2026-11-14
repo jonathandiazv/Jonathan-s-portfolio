@@ -22,10 +22,11 @@
     return el;
   }
 
-  /* "Texte FR / Text EN" -> partie selon la langue */
+  /* "Texte FR / Text EN / Texto ES" -> partie selon la langue */
   const pick = (str, lang) => {
     const parts = String(str).split(" / ");
-    return parts.length === 2 ? parts[lang === "fr" ? 0 : 1] : str;
+    if (parts.length < 2) return str;
+    return parts[Math.min(S.langs.indexOf(lang), parts.length - 1)];
   };
   const chips = (list, lang) => list.map((t) => h("li", null, pick(t, lang)));
   const fill = (el, nodes) => { el.replaceChildren(...nodes); };
@@ -34,9 +35,10 @@
   function initialLang() {
     try {
       const saved = localStorage.getItem("lang");
-      if (saved === "fr" || saved === "en") return saved;
+      if (S.langs.includes(saved)) return saved;
     } catch (e) { /* stockage indisponible */ }
-    return (navigator.language || "fr").toLowerCase().startsWith("fr") ? "fr" : "en";
+    const nav = (navigator.language || "fr").slice(0, 2).toLowerCase();
+    return S.langs.includes(nav) ? nav : "en";
   }
   let lang = initialLang();
 
@@ -58,7 +60,8 @@
       $(".tip", a).textContent = label;
       a.setAttribute("aria-label", label);
     });
-    $("#lang-label").textContent = lang === "fr" ? "EN" : "FR";
+    $("#lang-label").textContent = lang.toUpperCase();
+    $$("#lang-menu [data-lang]").forEach((b) => b.setAttribute("aria-current", String(b.dataset.lang === lang)));
     $("#lang-btn .tip").textContent = t.nav.lang;
     $("#lang-btn").setAttribute("aria-label", t.nav.lang);
     $("#modal-close").setAttribute("aria-label", t.close);
@@ -117,7 +120,6 @@
 
     // Contact
     const mail = "mailto:" + S.email;
-    $("#email-link").href = mail;
     $("#email-btn").href = mail;
 
     observeReveals();
@@ -166,11 +168,22 @@
   $("#square").addEventListener("click", (e) => e.currentTarget.classList.toggle("flipped"));
 
   /* ---------- Changement de langue ---------- */
-  $("#lang-btn").addEventListener("click", () => {
-    lang = lang === "fr" ? "en" : "fr";
-    try { localStorage.setItem("lang", lang); } catch (e) { /* ignore */ }
+  const langBtn = $("#lang-btn"), langMenu = $("#lang-menu");
+  function toggleLangMenu(open) {
+    langMenu.hidden = !open;
+    langBtn.setAttribute("aria-expanded", String(open));
+  }
+  langBtn.addEventListener("click", (e) => { e.stopPropagation(); toggleLangMenu(langMenu.hidden); });
+  langMenu.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-lang]");
+    if (!b) return;
+    lang = b.dataset.lang;
+    try { localStorage.setItem("lang", lang); } catch (err) { /* ignore */ }
+    toggleLangMenu(false);
     render();
   });
+  document.addEventListener("click", (e) => { if (!e.target.closest(".lang-wrap")) toggleLangMenu(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") toggleLangMenu(false); });
 
   /* ---------- Copier l'e-mail ---------- */
   $("#copy-btn").addEventListener("click", async () => {
@@ -228,7 +241,7 @@
     const wait = Math.max(0, 1200 - (performance.now() - start)); // laisser voir le trou noir un instant
     setTimeout(() => { loader.classList.add("done"); document.body.classList.remove("loading"); }, wait);
   }
-  if (video.readyState >= 3) finish();
-  video.addEventListener("canplay", finish, { once: true });
-  setTimeout(finish, 3500); // filet de sécurité si la vidéo ne charge pas
+  if (video.readyState >= 2) finish();
+  video.addEventListener("loadeddata", finish, { once: true });
+  setTimeout(finish, 2500); // filet de sécurité : l'affiche (poster) prend le relais si la vidéo tarde
 })();

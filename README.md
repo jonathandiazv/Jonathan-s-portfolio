@@ -1,6 +1,6 @@
 # Portfolio — Jonathan Díaz-Vreys
 
-Site personnel statique (HTML/CSS/JS, aucune dépendance), bilingue FR/EN.
+Site personnel statique (HTML/CSS/JS, aucune dépendance), trilingue FR/EN/ES.
 
 ## Mettre à jour le contenu
 
@@ -8,7 +8,7 @@ Tout le texte du site est dans **`js/content.js`** : expériences, formation, pr
 Modifier ce fichier suffit, la mise en page s'adapte automatiquement.
 
 - Ajouter un projet : copier un bloc dans `projects: [...]`, changer les textes et l'image (`assets/img/`).
-- Tags bilingues : écrire `"Texte FR / Text EN"`.
+- Tags multilingues : écrire `"Texte FR / Text EN / Texto ES"`.
 
 ## Voir le site en local
 
